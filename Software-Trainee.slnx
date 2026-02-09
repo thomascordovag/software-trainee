@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Patrones de Diseño/" />
+  <Folder Name="/Taller Solid/">
+    <Project Path="Single-Responsability/Single-Responsability.csproj" Id="a6f17864-21e1-430c-8170-4fe8b028fd5e" />
+  </Folder>
+</Solution>
