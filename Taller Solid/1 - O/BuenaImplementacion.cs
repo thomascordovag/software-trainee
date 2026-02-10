@@ -1,7 +1,8 @@
 // Buena implementación del Principio Abierto/Cerrado (Open/Closed Principle)
 // El sistema está abierto a extensión pero cerrado a modificación
+// Se puede agregar un nuevo tipo sin modificar el código existente, solo creando una nueva clase que implemente la interfaz IEmpleado
 
-namespace TallerSolid.O.Good
+namespace TallerSolid.O.BI
 {
     // Abstracción
     public interface IEmpleado
@@ -9,7 +10,7 @@ namespace TallerSolid.O.Good
         decimal CalcularBono(decimal salario);
     }
 
-    public class EmpleadoPermanente : IEmpleado
+    public class EmpleadoPermanente : IEmpleado // Primera clase concreta
     {
         public decimal CalcularBono(decimal salario)
         {
@@ -17,7 +18,7 @@ namespace TallerSolid.O.Good
         }
     }
 
-    public class EmpleadoTemporal : IEmpleado
+    public class EmpleadoTemporal : IEmpleado // Segunda clase concreta, sin modificar código existente 
     {
         public decimal CalcularBono(decimal salario)
         {
@@ -25,7 +26,7 @@ namespace TallerSolid.O.Good
         }
     }
 
-    public class EmpleadoContratista : IEmpleado
+    public class EmpleadoContratista : IEmpleado // Tercera clase concreta
     {
         public decimal CalcularBono(decimal salario)
         {
@@ -34,7 +35,7 @@ namespace TallerSolid.O.Good
     }
 
     // Nuevo tipo sin modificar código existente
-    public class EmpleadoPasante : IEmpleado
+    public class EmpleadoPasante : IEmpleado // Cuarta clase concreta, agregada sin modificar nada de las anteriores siguiendo el principio abierto/cerrado
     {
         public decimal CalcularBono(decimal salario)
         {
@@ -42,7 +43,7 @@ namespace TallerSolid.O.Good
         }
     }
 
-    public class CalculadoraBono
+    public class CalculadoraBono 
     {
         public decimal Calcular(decimal salario, IEmpleado empleado)
         {

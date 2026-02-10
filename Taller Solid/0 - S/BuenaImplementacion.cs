@@ -1,25 +1,27 @@
 // Buena implementación del Principio de Responsabilidad Única (Single Responsibility Principle)
-// Cada clase tiene una única responsabilidad
+// Cada clase tiene una única responsabilidad, la clase Empleado solo representa un empleado, la clase CalculadoraSalario solo se encarga de calcular salarios, la clase EmpleadoRepository solo se encarga de la persistencia y la clase ReporteEmpleado solo se encarga de generar reportes.
+// Esto cumple con el principio de responsabilidad única, ya que cada clase tiene una única razón para cambiar.
+using System;
 
-namespace TallerSolid.S.Good
+namespace TallerSolid.S.BI
 {
-    // Responsabilidad única: Representar un empleado
+    // Solo una responsabilidad: Representar un empleado
     public class Empleado
     {
         public string Nombre { get; set; }
         public decimal Salario { get; set; }
     }
 
-    // Responsabilidad única: Calcular salarios
+    // Solo una responsabilidad: Cálculo de salario neto
     public class CalculadoraSalario
     {
-        public decimal CalcularSalarioNeto(Empleado empleado)
+        public decimal CalcularSalarioNeto(Empleado empleado) 
         {
             return empleado.Salario * 0.85m;
         }
     }
 
-    // Responsabilidad única: Persistencia
+    // Solo una responsabilidad: Persistencia de empleados
     public class EmpleadoRepository
     {
         public void Guardar(Empleado empleado)
@@ -28,7 +30,7 @@ namespace TallerSolid.S.Good
         }
     }
 
-    // Responsabilidad única: Generación de reportes
+    // Solo una responsabilidad: Generar reportes de empleados
     public class ReporteEmpleado
     {
         private readonly CalculadoraSalario _calculadora;

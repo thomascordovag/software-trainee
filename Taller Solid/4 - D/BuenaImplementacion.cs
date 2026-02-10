@@ -1,16 +1,19 @@
 // Buena implementación del Principio de Inversión de Dependencias (Dependency Inversion Principle)
 // Ambos niveles dependen de abstracciones
+// Se crea una clase general para guardar en base de datos, y las implementaciones concretas dependen de esa abstracción
 
-namespace TallerSolid.D.Good
+using System;
+
+namespace TallerSolid.D.BI
 {
     // Abstracción
     public interface IBaseDatos
     {
-        void Guardar(string datos);
+        void Guardar(string datos); // Este método define la operación común que es guardar, pero no especifica cómo se realiza esa operación.
     }
 
     // Implementaciones de bajo nivel dependen de la abstracción
-    public class BaseDatosMySQL : IBaseDatos
+    public class BaseDatosMySQL : IBaseDatos // Este metodo implementa la operación de guardar en una base de datos MySQL tomando IBaseDatos como base.
     {
         public void Guardar(string datos)
         {
@@ -18,7 +21,7 @@ namespace TallerSolid.D.Good
         }
     }
 
-    public class BaseDatosPostgreSQL : IBaseDatos
+    public class BaseDatosPostgreSQL : IBaseDatos // Este metodo implementa la operación de guardar en una base de datos PostgreSQL tomando IBaseDatos como base.
     {
         public void Guardar(string datos)
         {

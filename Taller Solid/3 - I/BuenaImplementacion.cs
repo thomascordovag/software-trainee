@@ -1,9 +1,12 @@
 // Buena implementación del Principio de Segregación de Interfaces (Interface Segregation Principle)
 // Interfaces pequeñas y específicas
+// Se debe crear una interfaz con las operaciones que siempre se van a usar, y luego otras interfaces para las operaciones adicionales.
 
-namespace TallerSolid.I.Good
+using System;
+
+namespace TallerSolid.I.BI
 {
-    // Interfaces segregadas
+    // Interfaces separadas según las responsabilidades, permitiendo implementaciones específicas
     public interface ITrabajable
     {
         void Trabajar();

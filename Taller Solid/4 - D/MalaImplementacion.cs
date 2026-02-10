@@ -1,7 +1,9 @@
 // Mala implementación del Principio de Inversión de Dependencias (Dependency Inversion Principle)
 // Las clases de alto nivel dependen de clases de bajo nivel
 
-namespace TallerSolid.D.Bad
+using System;
+
+namespace TallerSolid.D.MI
 {
     // Clase de bajo nivel
     public class BaseDatosMySQL

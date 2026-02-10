@@ -1,7 +1,9 @@
 // Mala implementación del Principio de Sustitución de Liskov (Liskov Substitution Principle)
 // Las subclases no pueden sustituir a la clase base sin problemas
 
-namespace TallerSolid.L.Bad
+using System;
+
+namespace TallerSolid.L.MI
 {
     public class Rectangulo
     {
@@ -14,7 +16,7 @@ namespace TallerSolid.L.Bad
         }
     }
 
-    // Problema: Un cuadrado no puede comportarse como un rectángulo
+    // Un cuadrado no puede comportarse como un rectángulo
     public class Cuadrado : Rectangulo
     {
         private int _lado;
@@ -25,7 +27,7 @@ namespace TallerSolid.L.Bad
             set
             {
                 _lado = value;
-                // Viola LSP: cambiar ancho también cambia alto
+                // No sigue LSP: cambiar ancho también cambia alto
             }
         }
 
@@ -35,12 +37,12 @@ namespace TallerSolid.L.Bad
             set
             {
                 _lado = value;
-                // Viola LSP: cambiar alto también cambia ancho
+                // No sigue LSP: cambiar alto también cambia ancho
             }
         }
     }
 
-    // Este código falla
+    // Este codigo falla
     public class EjemploUso
     {
         public void ProbarArea()
@@ -48,7 +50,7 @@ namespace TallerSolid.L.Bad
             Rectangulo rect = new Cuadrado();
             rect.Ancho = 5;
             rect.Alto = 10;
-            // Esperamos área = 50, pero obtendremos 100
+            // Deberia area = 50, pero obtendremos 100
             Console.WriteLine($"Área: {rect.CalcularArea()}");
         }
     }

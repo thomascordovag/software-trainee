@@ -1,10 +1,13 @@
 // Mala implementación del Principio de Segregación de Interfaces (Interface Segregation Principle)
 // Interfaz grande que fuerza a implementar métodos innecesarios
 
-namespace TallerSolid.I.Bad
+using System;
+
+namespace TallerSolid.I.MI
 {
-    public interface ITrabajador
+    public interface ITrabajador 
     {
+        // Estas son las operaciones que un trabajador SIEMPRE debe hacer
         void Trabajar();
         void Comer();
         void Dormir();
@@ -21,7 +24,7 @@ namespace TallerSolid.I.Bad
     }
 
     // Problema: Un robot no come, no duerme, ni toma vacaciones
-    public class Robot : ITrabajador
+    public class Robot : ITrabajador 
     {
         public void Trabajar() => Console.WriteLine("Robot trabajando...");
         

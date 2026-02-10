@@ -1,15 +1,18 @@
 // Buena implementación del Principio de Sustitución de Liskov (Liskov Substitution Principle)
 // Las clases derivadas pueden sustituir a sus clases base correctamente
+// La idea de este principio es crear una clase que sea mas generica y que las clases especificas hereden de ella.
 
-namespace TallerSolid.L.Good
+using System;
+
+namespace TallerSolid.L.BI
 {
     // Abstracción común
-    public abstract class Forma
+    public abstract class Forma // Clase base generica para formas geométricas
     {
         public abstract int CalcularArea();
     }
 
-    public class Rectangulo : Forma
+    public class Rectangulo : Forma // Clase específica que hereda de Forma 
     {
         public int Ancho { get; set; }
         public int Alto { get; set; }
@@ -20,7 +23,7 @@ namespace TallerSolid.L.Good
         }
     }
 
-    public class Cuadrado : Forma
+    public class Cuadrado : Forma // Clase específica que hereda de Forma
     {
         public int Lado { get; set; }
 
@@ -35,8 +38,8 @@ namespace TallerSolid.L.Good
     {
         public void ProbarAreas()
         {
-            Forma rectangulo = new Rectangulo { Ancho = 5, Alto = 10 };
-            Forma cuadrado = new Cuadrado { Lado = 5 };
+            Forma rectangulo = new Rectangulo { Ancho = 5, Alto = 10 }; // Se puede usar la clase base para crear un rectángulo
+            Forma cuadrado = new Cuadrado { Lado = 5 }; // Se puede usar la clase base para crear un cuadrado
 
             Console.WriteLine($"Área rectángulo: {rectangulo.CalcularArea()}"); // 50
             Console.WriteLine($"Área cuadrado: {cuadrado.CalcularArea()}");     // 25
